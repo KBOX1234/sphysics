@@ -3,15 +3,12 @@ struct point{
     float y;
 };
 
-struct ColideShape{
-    struct point points[255];
-    unsigned char active;
+struct colideBox{
+    struct point a;
+    struct point b;
 };
 
-int pixleDistance(struct point* a, struct point* b);
+int pixelDistance(struct point* a, struct point* b);
 
-char DoesPointColideWithShape(struct ColideShape* shape, struct point*);
-
-char DoesShapeColide(struct ColideShape* a, struct ColideShape* b);
-
+char doesBoxAndPointColide(struct colideBox* box, struct point* point);
 #include "./lib/colide.c"
