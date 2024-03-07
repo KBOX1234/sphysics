@@ -1,12 +1,17 @@
-struct ColideBoxVector{
-    float sx;
-    float sy;
-    float ex;
-    float ey;
+struct point{
+    float x;
+    float y;
 };
 
-#define ColideBoxVector struct ColideBoxVector
+struct ColideShape{
+    struct point points[255];
+    unsigned char active;
+};
 
-char IsColiding(ColideBoxVector c1, ColideBoxVector c2);
+int pixleDistance(struct point* a, struct point* b);
+
+char DoesPointColideWithShape(struct ColideShape* shape, struct point*);
+
+char DoesShapeColide(struct ColideShape* a, struct ColideShape* b);
 
 #include "./lib/colide.c"
