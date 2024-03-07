@@ -8,7 +8,7 @@ int pixelDistance(struct point* a, struct point* b){
 }
 
 char doesBoxAndPointColide(struct colideBox* box, struct point* point){
-    if(point->x > box->a.x && point->x < box->b.x && point->y > box->a.y && point->y < box->b.y){
+    if(point->x >= box->a.x && point->x <= box->b.x && point->y >= box->a.y && point->y <= box->b.y){
         return 1;
     }
     else return 0;
