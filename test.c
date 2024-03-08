@@ -47,7 +47,7 @@ int main(void)
         struct point org = {0, 0};
 
         if(IsKeyDown(KEY_A)){
-            rotatePoly(&polyB, 1, org);
+            rotatePoly(&polyB, 1, getOrigin(&polyB));
         }
 
         // Check collisions
