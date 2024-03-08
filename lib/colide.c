@@ -8,16 +8,6 @@ int pixelDistance(struct point* a, struct point* b){
     return dist;
 }
 
-int xDistance(int x1, int x2){
-    if(x1 > x2) return x1 - x2;
-    else return x2 - x1;
-}
-
-int yDistance(int y1, int y2){
-    if(y1 > y2)return y1 - y2;
-    else return y2 - y1;
-}
-
 char doesBoxAndPointColide(struct colideBox* box, struct point* point){
     if(point->x >= box->a.x && point->x <= box->b.x && point->y >= box->a.y && point->y <= box->b.y){
         return 1;
@@ -44,4 +34,48 @@ char doesBoxAndBoxColide(struct colideBox* box1, struct colideBox* box2){
     if(doesBoxAndPointColide(box2, &cache) == 1) return 8;
 
     else return 0;
+}
+
+int gcd(struct fraction fract) {
+    while (fract.down != 0) {
+        int temp = fract.down;
+        fract.down = fract.up % fract.down;
+        fract.up = temp;
+    }
+    return fract.up;
+}
+
+struct fraction yincPerXdincPolygon(struct colidePolygon* poly){
+    struct fraction res;
+    if(poly->a.x > poly->b.x) res.up = poly->a.x - poly->b.x;
+    else res.up = poly->b.x - poly->a.x;
+
+    if(poly->a.y > poly->b.y) res.down = poly->a.y - poly->b.y;
+    else res.down = poly->b.y - poly->a.y;
+
+    int divisor = gcd(res); // Calculate GCD after defining res
+    res.up = res.up / divisor;
+    res.down = res.down / divisor;
+
+    return res;
+}
+
+int doesPointAndPolyColide(struct colidePolygon* poly, struct point* point) {
+    float x1 = poly->a.x;
+    float y1 = poly->a.y;
+    float x2 = poly->b.x;
+    float y2 = poly->b.y;
+    float x3 = poly->c.x;
+    float y3 = poly->c.y;
+    float px = point->x;
+    float py = point->y;
+
+    float area = 0.5 * (-y2 * x3 + y1 * (-x2 + x3) + x1 * (y2 - y3) + x2 * y3);
+    float s = 1 / (2 * area) * (y1 * x3 - x1 * y3 + (y3 - y1) * px + (x1 - x3) * py);
+    float t = 1 / (2 * area) * (x1 * y2 - y1 * x2 + (y1 - y2) * px + (x2 - x1) * py);
+
+    if (s > 0 && t > 0 && 1 - s - t > 0)
+        return 1; // Point is inside the triangle
+    else
+        return 0; // Point is outside the triangle
 }
