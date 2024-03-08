@@ -54,7 +54,14 @@ int doesPolyAndPolyColide(struct colidePolygon* poly1, struct colidePolygon* pol
 
 #include "./lib/colide.c"
 
+//rotates a polygon
 void rotatePoly(struct colidePolygon* poly, float angle, struct point origin);
 
+//gets the origin of a polygo
+struct point getOrigin(struct colidePolygon* poly);
+
+//void movePoly(struct colidePolygon* poly, point);
+
+//void moveBox(struct colideBox* box, )
 #include <math.h>
 #include "./lib/translate.h"

@@ -68,3 +68,11 @@ void movePoly(struct colidePolygon* poly, struct point xy){
     poly->c.x = poly->c.x + xy.x;
     poly->c.y = poly->c.y + xy.y;
 }
+
+void moveBox(struct colideBox* box, struct point xy){
+    box->a.x = box->a.x + xy.x;
+    box->a.y = box->a.y + xy.y;
+
+    box->b.x = box->b.x + xy.x;
+    box->b.y = box->b.y + xy.y;
+}

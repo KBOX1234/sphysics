@@ -47,10 +47,17 @@ int main(void)
         struct point org = {0, 0};
 
         if(IsKeyDown(KEY_A)){
-            rotatePoly(&polyB, 1, getOrigin(&polyB));
+            rotatePoly(&polyB, 4, getOrigin(&polyB));
         }
+        if(IsKeyDown(KEY_D)){
+            rotatePoly(&polyB, -4, getOrigin(&polyB));
+        }
+        struct point aaa = {0, 2};
+        struct point bbb = {0, -2};
+        if(IsKeyDown(KEY_W)) movePoly(&polyB, aaa);
+        if(IsKeyDown(KEY_S)) movePoly(&polyB, bbb);  
 
-        // Check collisions
+      // Check collision
         if (doesBoxAndPointColide(&boxA, &pointA)) DrawText("Box A collided with Point A", 10, 10, 20, BLACK);
         if (doesBoxAndPointColide(&boxB, &pointA)) DrawText("Box B collided with Point A", 10, 30, 20, BLACK);
         if (doesBoxAndBoxColide(&boxA, &boxB)) DrawText("Box A collided with Box B", 10, 50, 20, BLACK);
