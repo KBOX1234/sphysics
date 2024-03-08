@@ -1,46 +1,56 @@
 #include "raylib.h"
 #include "sphysics.h"
 
-int main(void)
-{
+int main() {
+    // Initialization
     const int screenWidth = 800;
     const int screenHeight = 450;
 
-    InitWindow(screenWidth, screenHeight, "test window");
+    InitWindow(screenWidth, screenHeight, "Point-Polygon Collision Detection");
+
+    // Define the polygon (triangle)
+    struct colidePolygon poly = {
+        { 400, 100 },   // Point A
+        { 300, 300 },   // Point B
+        { 500, 323 }    // Point C
+    };
+
+    // Define the point
+    struct point point = { 400, 200 };
 
     SetTargetFPS(60);
 
-    Vector2 box1 = {100, 100};
-    Vector2 box1size = {100, 100};
-    struct colideBox mouse;
-    
-    Vector2 mouseSize = {30, 30};
+    // Main game loop
+    while (!WindowShouldClose()) {
+        // Update
 
-    struct colideBox hitbox = {{box1.x, box1.y}, {box1.x+100, box1.y+100}};
-    while (!WindowShouldClose())
-    {
+        // Draw
         BeginDrawing();
-            
-            mouse.a.x = GetMouseX();
-            mouse.a.y = GetMouseY();
+        ClearBackground(RAYWHITE);
 
-            mouse.b.x = GetMouseX() + mouseSize.x;
-            mouse.b.y = GetMouseY() + mouseSize.y;
+        point.x = GetMouseX();
+        point.y = GetMouseY();
 
-            ClearBackground(RAYWHITE);
-            
-            DrawRectangleV(GetMousePosition(), mouseSize, BLUE);
-    
-            if(doesBoxAndBoxColide(&mouse, &hitbox) <= 1){
-                DrawRectangleV(box1, box1size, RED);
-            }
-            else DrawRectangleV(box1, box1size, GREEN);
-      
-            
+        // Convert struct points to Vector2
+        Vector2 v1 = { poly.a.x, poly.a.y };
+        Vector2 v2 = { poly.b.x, poly.b.y };
+        Vector2 v3 = { poly.c.x, poly.c.y };
+
+        // Draw the polygon
+        DrawTriangle(v1, v2, v3, RED);
+
+        // Draw the point
+        DrawCircle(point.x, point.y, 5, BLUE);
+
+        // Check for collision
+        if (doesPointAndPolyColide(&poly, &point)) {
+            DrawText("Collision Detected!", 10, 10, 20, GREEN);
+        }
 
         EndDrawing();
     }
 
+    // Close window and OpenGL context
     CloseWindow();
 
     return 0;
