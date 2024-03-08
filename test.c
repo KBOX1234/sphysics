@@ -12,19 +12,26 @@ int main(void)
 
     Vector2 box1 = {100, 100};
     Vector2 box1size = {100, 100};
-    struct point mouse; 
+    struct colideBox mouse;
+    
+    Vector2 mouseSize = {30, 30};
 
     struct colideBox hitbox = {{box1.x, box1.y}, {box1.x+100, box1.y+100}};
     while (!WindowShouldClose())
     {
         BeginDrawing();
             
-            mouse.x = GetMouseX();
-            mouse.y = GetMouseY();
+            mouse.a.x = GetMouseX();
+            mouse.a.y = GetMouseY();
+
+            mouse.b.x = GetMouseX() + mouseSize.x;
+            mouse.b.y = GetMouseY() + mouseSize.y;
 
             ClearBackground(RAYWHITE);
-
-            if(doesBoxAndPointColide(&hitbox, &mouse) == 1){
+            
+            DrawRectangleV(GetMousePosition(), mouseSize, BLUE);
+    
+            if(doesBoxAndBoxColide(&mouse, &hitbox) <= 1){
                 DrawRectangleV(box1, box1size, RED);
             }
             else DrawRectangleV(box1, box1size, GREEN);
