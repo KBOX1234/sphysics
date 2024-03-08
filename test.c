@@ -44,6 +44,12 @@ int main(void)
         DrawTriangleLines(triangleA[0], triangleA[1], triangleA[2], GREEN);
         DrawTriangleLines(triangleB[0], triangleB[1], triangleB[2], GREEN);
 
+        struct point org = {0, 0};
+
+        if(IsKeyDown(KEY_A)){
+            rotatePoly(&polyB, 1, org);
+        }
+
         // Check collisions
         if (doesBoxAndPointColide(&boxA, &pointA)) DrawText("Box A collided with Point A", 10, 10, 20, BLACK);
         if (doesBoxAndPointColide(&boxB, &pointA)) DrawText("Box B collided with Point A", 10, 30, 20, BLACK);
