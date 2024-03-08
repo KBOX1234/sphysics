@@ -47,3 +47,13 @@ void rotatePoly(struct colidePolygon* poly, float angle, struct point origin){
     poly->c.y += origin.y;
 
 }
+
+struct point getOrigin(struct colidePolygon* poly){
+    struct point center = {0, 0};
+    
+    // Calculate the average of x and y coordinates of all vertices
+    center.x = (poly->a.x + poly->b.x + poly->c.x) / 3.0f;
+    center.y = (poly->a.y + poly->b.y + poly->c.y) / 3.0f;
+    
+    return center;
+}
