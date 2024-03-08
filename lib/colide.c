@@ -79,3 +79,14 @@ int doesPointAndPolyColide(struct colidePolygon* poly, struct point* point) {
     else
         return 0; // Point is outside the triangle
 }
+
+int doesPolyAndPolyColide(struct colidePolygon* poly1, struct colidePolygon* poly2){
+    if(doesPointAndPolyColide(poly1, &poly2->a)) return 1;
+    if(doesPointAndPolyColide(poly1, &poly2->b)) return 2;
+    if(doesPointAndPolyColide(poly1, &poly2->c)) return 3;
+
+    if(doesPointAndPolyColide(poly2, &poly1->a)) return 4;
+    if(doesPointAndPolyColide(poly2, &poly1->b)) return 5;
+    if(doesPointAndPolyColide(poly2, &poly1->c)) return 6;
+    else return 0;
+}
