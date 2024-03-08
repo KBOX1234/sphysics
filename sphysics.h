@@ -29,7 +29,7 @@ struct shape{
     struct colidePolygon polygons[255];
     int Xoffset;
     int Yoffset;
-}
+};
 
 //measures the distance between point a and point b
 int pixelDistance(struct point* a, struct point* b);
@@ -54,6 +54,7 @@ int doesPolyAndPolyColide(struct colidePolygon* poly1, struct colidePolygon* pol
 
 #include "./lib/colide.c"
 
-void rotatePolygon(struct colidePolygon* poly, float angle);
+void rotatePoly(struct colidePolygon* poly, float angle, struct point origin);
 
+#include <math.h>
 #include "./lib/translate.h"
