@@ -57,3 +57,14 @@ struct point getOrigin(struct colidePolygon* poly){
     
     return center;
 }
+
+void movePoly(struct colidePolygon* poly, struct point xy){
+    poly->a.x = poly->a.x + xy.x;
+    poly->a.y = poly->a.y + xy.y;
+
+    poly->b.x = poly->b.x + xy.x;
+    poly->b.y = poly->b.y + xy.y;
+
+    poly->c.x = poly->c.x + xy.x;
+    poly->c.y = poly->c.y + xy.y;
+}
