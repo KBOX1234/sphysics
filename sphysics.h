@@ -60,8 +60,8 @@ void rotatePoly(struct colidePolygon* poly, float angle, struct point origin);
 //gets the origin of a polygo
 struct point getOrigin(struct colidePolygon* poly);
 
-//void movePoly(struct colidePolygon* poly, point);
+void movePoly(struct colidePolygon* poly, struct point xy);
 
-//void moveBox(struct colideBox* box, )
+void moveBox(struct colideBox* box, struct point xy);
 #include <math.h>
 #include "./lib/translate.h"
