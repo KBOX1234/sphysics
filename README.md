@@ -10,7 +10,7 @@ It's released under the LGPL 2.1 license so it's free to use in any project (som
 
 #### If you don't like the spelling just dm me some corrected code at kboxkbox1234@gmail.com
 
-##Setting up
+## Setting up
 The only requirement is to have math.h installed (it probably is already installed)<br>
 Simplest build command: <code>gcc your_file.c -o your_program</code><br><br>
 
