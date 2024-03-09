@@ -64,4 +64,4 @@ void movePoly(struct colidePolygon* poly, struct point xy);
 
 void moveBox(struct colideBox* box, struct point xy);
 #include <math.h>
-#include "./lib/translate.h"
+#include "./lib/translate.c"
