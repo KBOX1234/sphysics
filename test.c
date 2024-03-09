@@ -33,7 +33,7 @@ int main(void)
 
         // Draw
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(BLACK);
 
         // Draw physics objects
         DrawCircle(pointA.x, pointA.y, 5, RED);
@@ -58,12 +58,12 @@ int main(void)
         if(IsKeyDown(KEY_S)) movePoly(&polyB, bbb);  
 
       // Check collision
-        if (doesBoxAndPointColide(&boxA, &pointA)) DrawText("Box A collided with Point A", 10, 10, 20, BLACK);
-        if (doesBoxAndPointColide(&boxB, &pointA)) DrawText("Box B collided with Point A", 10, 30, 20, BLACK);
-        if (doesBoxAndBoxColide(&boxA, &boxB)) DrawText("Box A collided with Box B", 10, 50, 20, BLACK);
-        if (doesPointAndPolyColide(&polyA, &pointA)) DrawText("Polygon A collided with Point A", 10, 70, 20, BLACK);
-        if (doesPointAndPolyColide(&polyB, &pointA)) DrawText("Polygon B collided with Point A", 10, 90, 20, BLACK);
-        if (doesPolyAndPolyColide(&polyA, &polyB)) DrawText("Polygon A collided with Polygon B", 10, 110, 20, BLACK);
+        if (doesBoxAndPointColide(&boxA, &pointA)) DrawText("Box A collided with Point A", 10, 10, 20, WHITE);
+        if (doesBoxAndPointColide(&boxB, &pointA)) DrawText("Box B collided with Point A", 10, 30, 20, WHITE);
+        if (doesBoxAndBoxColide(&boxA, &boxB)) DrawText("Box A collided with Box B", 10, 50, 20, WHITE);
+        if (doesPointAndPolyColide(&polyA, &pointA)) DrawText("Polygon A collided with Point A", 10, 70, 20, WHITE);
+        if (doesPointAndPolyColide(&polyB, &pointA)) DrawText("Polygon B collided with Point A", 10, 90, 20, WHITE);
+        if (doesPolyAndPolyColide(&polyA, &polyB)) DrawText("Polygon A collided with Polygon B", 10, 110, 20, WHITE);
 
         EndDrawing();
     }
