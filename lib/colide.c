@@ -36,6 +36,36 @@ char doesBoxAndBoxColide(struct colideBox* box1, struct colideBox* box2){
     else return 0;
 }
 
+char doesBoxAndBoxColideD(struct colideBox* box1, struct colideBox* box2) {
+    // Check if there is a separation on the x-axis
+    if (box1->a.x > box2->b.x || box2->a.x > box1->b.x) {
+        return 0;  // No collision
+    }
+
+    // Check if there is a separation on the y-axis
+    if (box1->a.y > box2->b.y || box2->a.y > box1->b.y) {
+        return 0;  // No collision
+    }
+
+    // If there is no separation, boxes are colliding
+    return 1;
+}
+
+bool doesBoxAndBoxCollide(struct colideBox* box1, struct colideBox* box2) {
+    // Check if there is a separation on the x-axis
+    if (box1->a.x > box2->b.x || box2->a.x > box1->b.x) {
+        return false;  // No collision
+    }
+
+    // Check if there is a separation on the y-axis
+    if (box1->a.y > box2->b.y || box2->a.y > box1->b.y) {
+        return false;  // No collision
+    }
+
+    // If there is no separation, boxes are colliding
+    return true;
+}
+
 int gcd(struct fraction fract) {
     while (fract.down != 0) {
         int temp = fract.down;
