@@ -1,3 +1,6 @@
+#include "../sphysics.h"
+
+#include <math.h>
 void rotatePoly(struct colidePolygon* poly, float angle, struct point origin){
         // Translate the point so that the custom origin becomes the new origi
   //

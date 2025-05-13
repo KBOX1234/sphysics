@@ -1,3 +1,5 @@
+#include "../sphysics.h"
+
 int pixelDistance(struct point* a, struct point* b){
     int dist = 0;
     if(a->x > b->x) dist = dist + ((int)a->x-(int)b->x);

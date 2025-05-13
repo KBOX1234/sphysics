@@ -11,6 +11,8 @@ struct colideBox{
     struct point b;
 };
 
+#include <stdbool.h>
+
 //A triangle shaped colision box for more complex/accurate colisions
 struct colidePolygon{
     struct point a;
@@ -52,8 +54,6 @@ int doesPointAndPolyColide(struct colidePolygon* poly, struct point* point);
 //sees if 2 polygons are coliding
 int doesPolyAndPolyColide(struct colidePolygon* poly1, struct colidePolygon* poly2);
 
-#include "./lib/colide.c"
-
 //rotates a polygon
 void rotatePoly(struct colidePolygon* poly, float angle, struct point origin);
 
@@ -65,6 +65,3 @@ void movePoly(struct colidePolygon* poly, struct point xy);
 
 //moves a box
 void moveBox(struct colideBox* box, struct point xy);
-
-#include <math.h>
-#include "./lib/translate.c"
