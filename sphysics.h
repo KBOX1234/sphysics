@@ -1,4 +1,4 @@
-
+#pragma once
 //A vector 2 point with an X and a Y axis
 struct point{
     float x;
@@ -65,3 +65,9 @@ void movePoly(struct colidePolygon* poly, struct point xy);
 
 //moves a box
 void moveBox(struct colideBox* box, struct point xy);
+
+
+#ifdef SPHYSICS_IMPL
+#include "lib/translate.c"
+#include "lib/colide.c"
+#endif
